@@ -14,7 +14,13 @@ const config = {
   },
   externals: [nodeExternals()],
   module: {
-    rules: [{ test: /\.js$/, exclude: /node_modules/, use: ["babel-loader"] }],
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, use: ["babel-loader"] },
+      {
+        test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
+        use: "file-loader",
+      },
+    ],
   },
 };
 
