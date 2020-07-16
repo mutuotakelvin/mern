@@ -1,45 +1,51 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import compImg from "./../assets/images/computer.jpg";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Typography from '@material-ui/core/Typography'
+import comp from './../assets/images/computer.jpg'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 1500,
-    margin: "auto",
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
+    maxWidth: 600,
+    margin: 'auto',
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(5)
   },
   title: {
-    padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px
-        ${theme.spacing(2)}px`,
-    color: theme.palette.openTitle,
+    padding:`${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(2)}px`,
+    color: theme.palette.openTitle
   },
   media: {
-    minHeight: 700,
+    minHeight: 400
   },
-}));
+  credit: {
+    padding: 10,
+    textAlign: 'right',
+    backgroundColor: '#ededed',
+    borderBottom: '1px solid #d0d0d0',
+    '& a':{
+      color: '#3f4771'
+    } 
+  }
+}))
 
-export default function Home() {
-  const classes = useStyles();
-  return (
-    <Card className={classes.card}>
-      <Typography variant='h6' className={classes.title}>
-        Home Page
-      </Typography>
-      <CardMedia
-        className={classes.media}
-        image={compImg}
-        title='Desktop'
-      ></CardMedia>
-      <CardContent>
-        <Typography variant='body2' component='p'>
-          Welcome to the MERN Skeleton home page.
-        </Typography>
-      </CardContent>
-    </Card>
-  );
+export default function Home(){
+  const classes = useStyles()
+    return (
+        <Card className={classes.card}>
+          <Typography variant="h6" className={classes.title}>
+            Home Page
+          </Typography>
+          <CardMedia className={classes.media} image={comp} title="comp"/>
+          <Typography variant="body2" component="p" className={classes.credit} color="textSecondary">Photo by <a href="https://unsplash.com/@boudewijn_huysmans" target="_blank" rel="noopener noreferrer">Boudewijn Huysmans</a> on Unsplash</Typography>
+          <CardContent>
+            <Typography variant="body1" component="p">
+              Welcome to the MERN Skeleton home page.
+            </Typography>
+          </CardContent>
+        </Card>
+    )
 }
+
