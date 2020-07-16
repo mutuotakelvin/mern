@@ -5,7 +5,7 @@ import config from "./../../config/config";
 
 const signin = async (req, res) => {
   try {
-    let user = await User.findOne({ "email": req.body.email });
+    let user = await User.findOne({ email: req.body.email });
     if (!user) return res.status("401").json({ error: "User not found" });
 
     if (!user.authenticate(req.body.password)) {
@@ -40,12 +40,12 @@ const signout = (req, res) => {
 const requireSignin = expressJwt({
   secret: config.jwtSecret,
   userProperty: "auth",
-  algorithms: ["RS256"],
+  algorithms: ["HS256"],
 });
 
 const hasAuthorization = (req, res, next) => {
   const authorized = req.profile && req.auth && req.profile._id == req.auth._id;
-  if (!(authorized)) {
+  if (!authorized) {
     return res.status("403").json({
       error: "User is not authorized",
     });
